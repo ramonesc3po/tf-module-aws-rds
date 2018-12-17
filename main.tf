@@ -8,6 +8,8 @@ locals {
   option_group_name             = "${coalesce(var.option_group_name, module.db_options_group.this_db_option_group_id)}"
   enable_create_db_option_group = "${var.option_group_name == "" && var.engine != "postgres" ? var.create_db_option_group : 0}"
 
+  db_final_snapshot_identifier = "final-${var.final_snapshot_identifier}-${var.db_region}-${var.db_tier}"
+
   compose_identifier = "${var.identifier}-${var.db_region}-${var.db_tier}"
 }
 
