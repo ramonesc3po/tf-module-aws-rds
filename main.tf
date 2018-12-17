@@ -17,7 +17,7 @@ module "db_subnet_group" {
   source = "./modules/db_subnet_group"
 
   create      = "${local.enable_create_db_subnet_group}"
-  identifier  = "${var.identifier}"
+  identifier  = "${local.compose_identifier}"
   name_prefix = "${local.compose_identifier}-"
   subnet_ids  = ["${var.subnet_ids}"]
 
@@ -28,7 +28,7 @@ module "db_parameter_group" {
   source = "./modules/db_parameter_group"
 
   create      = "${local.enable_create_db_parameter_group}"
-  identifier  = "${var.identifier}"
+  identifier  = "${local.compose_identifier}"
   name_prefix = "${local.compose_identifier}-"
   family      = "${var.family}"
 
@@ -41,7 +41,7 @@ module "db_options_group" {
   source = "./modules/db_options_group"
 
   create                   = "${local.enable_create_db_option_group}"
-  identifier               = "${var.identifier}"
+  identifier               = "${local.compose_identifier}"
   name_prefix              = "${local.compose_identifier}-"
   engine_name              = "${var.engine}"
   major_engine_version     = "${var.major_engine_version}"
